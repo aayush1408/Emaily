@@ -1,10 +1,22 @@
 import React from 'react';
-
-const App = ()=>{
+import {BrowserRouter, Route} from 'react-router-dom';
+import Header from './Header.js'
+import {connect} from 'react-redux';
+import * as actions from '../actions';
+class App extends React.Component{
+    componentDidMount(){
+        this.props.fetchUser();
+    }
+    render(){
     return(
-           <div>
-               <h1>Hi there</h1>
+           <div className="container">
+               <BrowserRouter>
+                   <div>
+                       <Header/>
+                   </div>
+               </BrowserRouter>
            </div>
            )
 }
-export default App;
+}
+export default connect(null,actions)(App);
